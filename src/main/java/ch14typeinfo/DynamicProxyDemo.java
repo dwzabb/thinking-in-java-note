@@ -8,11 +8,21 @@ public class DynamicProxyDemo {
     public static void main(String[] args) {
         Subject realSubject = new RealSubject();
         ProxyHandler proxyHandler = new ProxyHandler(realSubject);
+
+//        Class clazz = Proxy.getProxyClass(
+//                RealSubject.class.getClassLoader(),
+//                RealSubject.class.getInterfaces());
+//        System.out.println("Clazz " + clazz);
+//        System.out.println("Clazz methods " + clazz.getMethods());
+//        System.out.println("Clazz super class " + clazz.getSuperclass());
+
         Subject proxyObject = (Subject)Proxy.newProxyInstance(
                 RealSubject.class.getClassLoader(),
                 RealSubject.class.getInterfaces(),
                 proxyHandler);
         proxyObject.request();
+
+        proxyObject.anotherRequest();
     }
 }
 
@@ -21,15 +31,22 @@ public class DynamicProxyDemo {
  */
 interface Subject{
     String request();
+    void anotherRequest();
 }
 
 /**
  * 委托类
  */
 class RealSubject implements Subject{
+    @Override
     public String request(){
-        System.out.println("====RealSubject Request====");
+        System.out.println("====RealSubject request====");
         return "RealSubject.request()";
+    }
+
+    @Override
+    public void anotherRequest() {
+        System.out.println("====RealSubject anotherRequest====");
     }
 }
 
