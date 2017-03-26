@@ -2,9 +2,6 @@ package ch15generic;
 
 import java.util.Iterator;
 
-/**
- * Created by DengWenzhe on 3/5/17.
- */
 public class IterableFibonacci implements Iterable<Integer>{
     int size;
     int[] cache;
