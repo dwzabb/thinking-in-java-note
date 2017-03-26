@@ -1,3 +1,2 @@
-# thinking-in-java-note
-Thinking in Java Read Notes
+# Thinking in Java Notes
 敲一些课后习题和sample code
